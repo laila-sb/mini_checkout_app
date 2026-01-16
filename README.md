@@ -1,0 +1,1 @@
+# mini_checkout_app
