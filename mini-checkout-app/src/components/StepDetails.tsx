@@ -15,22 +15,22 @@ export function StepDetails({
     onNext,
     isNextDisabled
  }: StepDetailsProps) {
-    const handleChange = (event:React.ChangeEvent<HTMLInputElement>) => {
-        onEmailChange(event.target.value)
-    }
-     const handleNameChange = (event:React.ChangeEvent<HTMLInputElement>) => {
-        onNameChange(event.target.value)
-    }
+
+    const handleChange = (handler: (value:string) => void) => 
+        (e: React.ChangeEvent<HTMLInputElement>) =>
+        handler(e.target.value)
 
     return <>
         <input
         value={name}
         placeholder="name"
-        onChange={handleNameChange}></input>
+        onChange={handleChange(onNameChange)}>
+        </input>
+
         <input 
         value={email} 
         placeholder="email"
-        onChange = {handleChange} 
+        onChange = {handleChange(onEmailChange)} 
         />
         <button onClick={onNext} disabled={isNextDisabled}> Next </button> 
         </>
